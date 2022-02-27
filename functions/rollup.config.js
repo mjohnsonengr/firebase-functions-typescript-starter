@@ -1,5 +1,7 @@
 import typescript from '@rollup/plugin-typescript';
 import nodeResolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
 
 /**
  * Add here external dependencies that actually you use.
@@ -15,12 +17,14 @@ export default {
     external: externals,
     plugins: [
         typescript(),
-        nodeResolve()
+        nodeResolve(),
+        commonjs(),
+        json()
     ],
     onwarn: () => { return },
     output: {
         file: 'lib/index.js',
         format: 'es',
-        sourcemap: false
+        sourcemap: true
     }
 }
